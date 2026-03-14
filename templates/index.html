@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2>🍽️ เมนูอาหารจากทั่วโลก</h2>
+        <p class="text-muted">สำรวจและแบ่งปันเมนูอาหารที่คุณชื่นชอบ</p>
+    </div>
+    <div class="col-md-4 text-end">
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('add_food') }}" class="btn btn-primary">เพิ่มเมนูอาหารใหม่</a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row">
+    {% if foods %}
+        {% for food in foods %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                {% if food.image_url %}
+                    <img src="{{ food.image_url }}" class="card-img-top" alt="{{ food.name }}" style="height: 200px; object-fit: cover;">
+                {% else %}
+                    <div class="card-img-top bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <span>ไม่มีรูปภาพ 🍽️</span>
+                    </div>
+                {% endif %}
+
+                <div class="card-body">
+                    <h5 class="card-title text-primary">{{ food.name }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">📍 ประเทศ: {{ food.country }}</h6>
+                    
+                    {% if food.year_origin %}
+                        <p class="mb-2"><span class="badge bg-info text-dark">⏳ กำเนิด: {{ food.year_origin }}</span></p>
+                    {% endif %}
+                    
+                    <p class="mb-2">
+                        {% if food.food_type == 'ของหวาน' %}
+                            <span class="badge bg-danger">🍰 ของหวาน</span>
+                        {% else %}
+                            <span class="badge bg-success">🍲 ของคาว</span>
+                        {% endif %}
+                    </p>
+
+                    {% if current_user.is_authenticated and current_user.id == food.user_id %}
+                        <div class="mt-3 d-flex gap-2">
+                            <a href="{{ url_for('edit_food', id=food.id) }}" class="btn btn-sm btn-outline-warning">✏️ แก้ไข</a>
+                            
+                            <form action="{{ url_for('delete_food', id=food.id) }}" method="POST" onsubmit="return confirm('คุณแน่ใจหรือไม่ว่าต้องการลบเมนู {{ food.name }} นี้?');">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">🗑️ ลบ</button>
+                            </form>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="card-footer bg-transparent text-muted" style="font-size: 0.85rem;">
+                    เพิ่มโดย: {{ food.author.username }} <br>
+                    เมื่อ: {{ food.created_at.strftime('%Y-%m-%d') }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="col-12 text-center py-5">
+            <h4 class="text-muted">ยังไม่มีข้อมูลอาหารในระบบ</h4>
+            <p>มาเป็นคนแรกที่แชร์เมนูอร่อยๆ กันเถอะ!</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

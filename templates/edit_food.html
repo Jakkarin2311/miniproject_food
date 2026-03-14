@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row justify-content-center mt-4">
+    <div class="col-md-8">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-info text-white text-center py-3">
+                <h4 class="mb-0">✏️ แก้ไขเมนูอาหาร</h4>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" action="{{ url_for('edit_food', id=food.id) }}">
+                    <div class="mb-3">
+                        <label for="name" class="form-label fw-bold">ชื่ออาหาร</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ food.name }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="country" class="form-label fw-bold">ประเทศต้นตำรับ</label>
+                        <input type="text" class="form-control" id="country" name="country" value="{{ food.country }}" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">ประเภทอาหาร</label>
+                        <div class="p-2 border rounded bg-light">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="food_type" id="savory" value="ของคาว" {% if food.food_type == 'ของคาว' %}checked{% endif %} required>
+                                <label class="form-check-label" for="savory">🍲 ของคาว</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="food_type" id="sweet" value="ของหวาน" {% if food.food_type == 'ของหวาน' %}checked{% endif %} required>
+                                <label class="form-check-label" for="sweet">🍰 ของหวาน</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image_url" class="form-label fw-bold">ลิงก์รูปภาพ (URL)</label>
+                        <input type="url" class="form-control" id="image_url" name="image_url" value="{{ food.image_url or '' }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="year_origin" class="form-label fw-bold">ปีที่กำเนิด / ยุคสมัย</label>
+                        <input type="text" class="form-control" id="year_origin" name="year_origin" value="{{ food.year_origin or '' }}">
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{{ url_for('index') }}" class="btn btn-secondary">ยกเลิก</a>
+                        <button type="submit" class="btn btn-info text-white fw-bold">อัปเดตข้อมูล</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
