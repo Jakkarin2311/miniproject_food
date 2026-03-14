@@ -1,0 +1,5 @@
+.venv/
+instance/
+local_database.db
+__pycache__/
+.env
