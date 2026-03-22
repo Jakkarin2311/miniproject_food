@@ -11,18 +11,18 @@
                 <form method="POST" action="{{ url_for('add_food') }}">
                     <div class="mb-3">
                         <label for="name" class="form-label fw-bold">ชื่ออาหาร</label>
-                        <input type="text" class="form-control" id="name" name="name" required placeholder="เช่น ต้มยำกุ้ง, ซูชิ, ทาโก้">
+                        <input type="text" class="form-control" id="name" name="name" required placeholder="">
                     </div>
                     <div class="mb-3">
                         <label for="country" class="form-label fw-bold">ประเทศต้นตำรับ</label>
-                        <input type="text" class="form-control" id="country" name="country" required placeholder="เช่น ไทย, ญี่ปุ่น, เม็กซิโก">
+                        <input type="text" class="form-control" id="country" name="country" required placeholder="">
                     </div>
                     <div class="mb-3">
                         <label class="form-label fw-bold">ประเภทอาหาร</label>
                         <div class="p-2 border rounded bg-light">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="food_type" id="savory" value="ของคาว" required>
-                                <label class="form-check-label" for="savory">🍲 ของคาว</label>
+                                <input class="form-check-input" type="radio" name="food_type" id="savory" value="อาหาร" required>
+                                <label class="form-check-label" for="savory">🍲 อาหาร</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="food_type" id="sweet" value="ของหวาน" required>
@@ -32,13 +32,12 @@
                     </div>
                     <div class="mb-3">
                         <label for="image_url" class="form-label fw-bold">ลิงก์รูปภาพ (URL)</label>
-                        <input type="url" class="form-control" id="image_url" name="image_url" placeholder="เช่น https://example.com/image.jpg">
-                        <div class="form-text text-muted">นำ URL รูปภาพจากอินเทอร์เน็ตมาวางได้เลย</div>
+                        <input type="url" class="form-control" id="image_url" name="image_url" placeholder="" maxlength="500" >
                     </div>
 
                     <div class="mb-3">
                         <label for="year_origin" class="form-label fw-bold">ปีที่กำเนิด / ยุคสมัย</label>
-                        <input type="text" class="form-control" id="year_origin" name="year_origin" placeholder="เช่น 1950, ศตวรรษที่ 18, หรือ ปลายยุคเอโดะ">
+                        <input type="text" class="form-control" id="year_origin" name="year_origin" placeholder="">
                     </div>
                     <div class="d-flex justify-content-between mt-4">
                         <a href="{{ url_for('index') }}" class="btn btn-secondary">ยกเลิก</a>

@@ -5,18 +5,24 @@
     <div class="col-md-6 col-lg-4">
         <div class="card shadow-sm border-0">
             <div class="card-header bg-primary text-white text-center py-3">
-                <h4 class="mb-0">📝 สมัครสมาชิก</h4>
+                <h4 class="mb-0">สมัครสมาชิก</h4>
             </div>
             <div class="card-body p-4">
                 <form method="POST" action="{{ url_for('register') }}">
                     <div class="mb-3">
                         <label for="username" class="form-label">ชื่อผู้ใช้งาน (Username)</label>
-                        <input type="text" class="form-control" id="username" name="username" required placeholder="ตั้งชื่อผู้ใช้งานของคุณ">
+                        <input type="text" class="form-control" id="username" name="username" required placeholder="">
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">รหัสผ่าน (Password)</label>
-                        <input type="password" class="form-control" id="password" name="password" required placeholder="ตั้งรหัสผ่าน">
+                        <input type="password" class="form-control" id="password" name="password" required placeholder="">
                     </div>
+                    
+                    <div class="mb-3">
+                        <label for="confirm_password" class="form-label">ยืนยันรหัสผ่าน (Confirm Password)</label>
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" required placeholder="">
+                    </div>
+
                     <button type="submit" class="btn btn-primary w-100 mt-3">ยืนยันการสมัคร</button>
                 </form>
                 <div class="text-center mt-4">

@@ -31,14 +31,14 @@
                     <h6 class="card-subtitle mb-2 text-muted">📍 ประเทศ: {{ food.country }}</h6>
                     
                     {% if food.year_origin %}
-                        <p class="mb-2"><span class="badge bg-info text-dark">⏳ กำเนิด: {{ food.year_origin }}</span></p>
+                        <p class="mb-2"><span class="badge  text-dark">⏳ กำเนิด: {{ food.year_origin }}</span></p>
                     {% endif %}
                     
                     <p class="mb-2">
                         {% if food.food_type == 'ของหวาน' %}
-                            <span class="badge bg-danger">🍰 ของหวาน</span>
+                            <span class="badge bg-success">🍰 ของหวาน</span>
                         {% else %}
-                            <span class="badge bg-success">🍲 ของคาว</span>
+                            <span class="badge bg-danger">🍲 อาหาร</span>
                         {% endif %}
                     </p>
 
