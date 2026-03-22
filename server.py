@@ -132,7 +132,7 @@ def edit_food(id):
         food.image_url = request.form.get('image_url')
         food.year_origin = request.form.get('year_origin')
 
-        if image_url and len(image_url) > 500:
+        if food.image_url and len(food.image_url) > 500:
             flash('ใช้รูปภาพไม่ได้ (ลิงก์ยาวเกินไป กรุณาคลิกขวาแล้วเลือก "คัดลอกที่อยู่รูปภาพ" แทนครับ)')
             return redirect(url_for('edit_food', id=food.id))
         
